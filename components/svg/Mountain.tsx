@@ -1,8 +1,12 @@
 import * as React from 'react'
 import { FC } from 'react'
-import { StyleProp, StyleSheetProperties, ViewStyle } from 'react-native'
-import Svg, { Path, Rect } from 'react-native-svg'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import Svg, { Path } from 'react-native-svg'
 import { CARD_HEIGHT, CARD_WIDTH } from '../../constants'
+
+export interface SvgComponentProp {
+  style?: StyleProp<ViewStyle>
+}
 
 const Mountain: FC = () => {
   return (

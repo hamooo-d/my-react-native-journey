@@ -1,23 +1,39 @@
-import React from 'react'
-import { View, StyleSheet, Text, Button } from 'react-native'
-import Animated from 'react-native-reanimated'
+import React, { useEffect, useState } from 'react'
+import { View, StyleSheet, Button, Text } from 'react-native'
+import Animated, { useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
 import Mountain from '../../components/svg/Mountain'
 import Pattern from '../../components/svg/Pattern'
 import Pattern2 from '../../components/svg/Pattern2'
+import AnimatedCard from './AnimatedCard'
 
 interface TransitionsProps {}
 
+const cards = [Mountain, Pattern, Mountain]
+
 const Transitions: React.FC<TransitionsProps> = () => {
+  const [toggled, setToggle] = useState(false)
+  const isToggled = useSharedValue(false)
+
+  useEffect(() => {
+    isToggled.value = toggled
+  }, [toggled])
+
+  //@ts-ignore
+  const transition = useDerivedValue(() => withSpring(isToggled.value))
+
   return (
     <View style={styles.container}>
-      <View style={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Animated.View style={StyleSheet.absoluteFill}>
-          <Mountain />
-          <Pattern />
-          <Pattern2 />
-        </Animated.View>
+      <View
+        style={{
+          flexGrow: 1,
+          justifyContent: 'center',
+        }}
+      >
+        {cards.slice(0, 3).map((card, index) => (
+          <AnimatedCard key={index} {...{ index, card, transition }} />
+        ))}
       </View>
-      <Button title="ok" onPress={() => {}} />
+      <Button title={toggled ? 'Reset' : 'Start'} onPress={() => setToggle((prev) => !prev)} />
     </View>
   )
 }

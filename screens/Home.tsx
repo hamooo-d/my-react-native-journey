@@ -10,6 +10,7 @@ const Home: React.FC<HomeProps> = () => {
     <View style={styles.container}>
       <Tab title="🕵️ Pan Gesture" goToScreen="Pan Gesture" />
       <Tab title="🎆 Transitions" goToScreen="Transitions" />
+      <Tab title="🏸 Collapse" goToScreen="Collapse Gesutre" />
     </View>
   )
 }

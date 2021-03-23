@@ -11,7 +11,7 @@ import { clamp, withBouncing } from 'react-native-redash'
 import Card from '../../components/Card'
 import { CARD_HEIGHT, CARD_WIDTH } from '../../constants'
 
-type Context = {
+export type Context = {
   offsetY: number
   offsetX: number
 }
