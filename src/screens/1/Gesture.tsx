@@ -34,7 +34,6 @@ const Gesture: React.FC<GestureProps> = ({ width, height }) => {
     },
 
     onActive: (e, ctx) => {
-      console.log(e.translationX, boundX)
       translateX.value = clamp(e.translationX + ctx.offsetX, 0, boundX)
       translateY.value = clamp(e.translationY + ctx.offsetY, 0, boundY)
     },
