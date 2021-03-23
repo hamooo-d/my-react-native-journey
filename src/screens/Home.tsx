@@ -20,7 +20,7 @@ interface TabProps {
   goToScreen: string
 }
 
-const Tab: React.FC<TabProps> = ({ title, goToScreen }) => {
+const Tab: React.FC<TabProps> = React.memo(({ title, goToScreen }) => {
   const navigator = useNavigation()
   const goTo = () => {
     navigator.navigate(goToScreen)
@@ -35,7 +35,7 @@ const Tab: React.FC<TabProps> = ({ title, goToScreen }) => {
       </TouchableOpacity>
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {

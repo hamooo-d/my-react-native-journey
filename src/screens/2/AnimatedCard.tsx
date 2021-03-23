@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, StyleSheet, Dimensions } from 'react-native'
-import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated'
+import { Dimensions, StyleSheet } from 'react-native'
+import Animated, { useAnimatedStyle } from 'react-native-reanimated'
 import { mix } from 'react-native-redash'
 
 interface AnimatedCardProps {

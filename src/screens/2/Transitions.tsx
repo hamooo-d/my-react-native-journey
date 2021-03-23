@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, Button, Text } from 'react-native'
-import Animated, { useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
+import { View, StyleSheet, Button } from 'react-native'
+import { useDerivedValue, useSharedValue, withSpring } from 'react-native-reanimated'
 import Mountain from '../../components/svg/Mountain'
 import Pattern from '../../components/svg/Pattern'
-import Pattern2 from '../../components/svg/Pattern2'
 import AnimatedCard from './AnimatedCard'
 
 interface TransitionsProps {}
@@ -18,7 +17,7 @@ const Transitions: React.FC<TransitionsProps> = () => {
     isToggled.value = toggled
   }, [toggled])
 
-  //@ts-ignore
+  // @ts-ignore
   const transition = useDerivedValue(() => withSpring(isToggled.value))
 
   return (
