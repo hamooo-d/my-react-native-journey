@@ -6,6 +6,7 @@ import Gesture from './src/screens/1'
 import Transitions from './src/screens/2/Transitions'
 import CollapseGesture from './src/screens/3'
 import Home from './src/screens/Home'
+import BottomTabBar from './src/screens/4'
 
 const Stack = createStackNavigator()
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Pan Gesture" component={Gesture} />
         <Stack.Screen name="Transitions" component={Transitions} />
         <Stack.Screen name="Collapse Gesutre" component={CollapseGesture} />
+        <Stack.Screen name="Bottom Tabbar" component={BottomTabBar} />
       </Stack.Navigator>
     </NavigationContainer>
   )
