@@ -8,10 +8,10 @@ interface HomeProps {}
 const Home: React.FC<HomeProps> = () => {
   return (
     <View style={styles.container}>
-      <Tab title="🕵️ Pan Gesture" goToScreen="Pan Gesture" />
-      <Tab title="🎆 Transitions" goToScreen="Transitions" />
-      <Tab title="🏸 Collapse" goToScreen="Collapse Gesutre" />
-      <Tab title="🏸 Bottom Tab" goToScreen="Bottom Tabbar" />
+      <Tab title="✋  Pan Gesture" goToScreen="Pan Gesture" />
+      <Tab title="🎆  Transitions" goToScreen="Transitions" />
+      <Tab title="🏸  Collapse" goToScreen="Collapse Gesutre" />
+      <Tab title="🔽  Bottom Tab" goToScreen="Bottom Tabbar" />
     </View>
   )
 }

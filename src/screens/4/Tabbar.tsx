@@ -2,6 +2,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React, { Fragment } from 'react'
 import { Dimensions, StyleSheet, View } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 import { width } from '../../constants'
 import CustomTab from './CustomTab'
 import Indicator from './Indicator'
@@ -15,7 +16,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
   }
 
   return (
-    <View style={styles.tabBar}>
+    <LinearGradient style={styles.tabBar} colors={['#6fe3e1', '#5257e5']}>
       <Indicator index={state.index} />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key]
@@ -68,7 +69,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
 
         return <Tab key={route.key} {...props} />
       })}
-    </View>
+    </LinearGradient>
   )
 }
 

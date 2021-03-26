@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TabBar from './Tabbar'
-import { AntDesign, FontAwesome } from '@expo/vector-icons'
+import { AntDesign, FontAwesome, Ionicons } from '@expo/vector-icons'
 import TabBarIcon from './TabBarIcon'
 
 const BottomTab = createBottomTabNavigator()
@@ -14,28 +14,28 @@ const BottomTabBar: React.FC = () => {
         component={Screen(1)}
         name="Screen 1"
         options={{
-          tabBarIcon: (props) => <TabBarIcon {...props} name="twitch" color="#8c1097" />,
+          tabBarIcon: (props) => <TabBarIcon {...props} name="person" color="#369419" />,
         }}
       />
       <BottomTab.Screen
         component={Screen(2)}
         name="Screen 2"
         options={{
-          tabBarIcon: (props) => <TabBarIcon {...props} name="facebook" color="blue" />,
+          tabBarIcon: (props) => <TabBarIcon {...props} name="happy" color="#b30b0b" />,
         }}
       />
       <BottomTab.Screen
         component={Screen(3)}
         name="Screen 3"
         options={{
-          tabBarIcon: (props) => <TabBarIcon {...props} name="gg" color="yellow" />,
+          tabBarIcon: (props) => <TabBarIcon {...props} name="game-controller" color="#cc880a" />,
         }}
       />
       <BottomTab.Screen
         component={Screen(4)}
         name="Screen 4"
         options={{
-          tabBarIcon: (props) => <TabBarIcon {...props} name="github-alt" color="green" />,
+          tabBarIcon: (props) => <TabBarIcon {...props} name="gift" color="#b1128e" />,
         }}
       />
     </BottomTab.Navigator>

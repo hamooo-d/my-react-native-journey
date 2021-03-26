@@ -1,5 +1,13 @@
-## My React Native Journey
+# My React Native Journey
 
-Ideas:
-Face emotion
-Add Pan gesutre handle to cards
+---
+
+---
+
+### Todos
+
+- [x] Bottom tabbar (Done)
+- [ ] Face emotion
+- [ ] Add Pan gesutre handle to cards
+
+---

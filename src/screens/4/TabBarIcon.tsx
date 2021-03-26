@@ -1,10 +1,8 @@
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import React, { useEffect } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Animated, {
-  interpolateColor,
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withDelay,
   withTiming,
@@ -17,30 +15,44 @@ interface TabBarIconProps {
   focused: boolean
 }
 
-const AnimatedFontAwesome = Animated.createAnimatedComponent(FontAwesome)
-
 const TabBarIcon: React.FC<TabBarIconProps> = ({ focused, color, ...props }) => {
-  const x = useSharedValue(0)
+  const opacityFill = useSharedValue(0)
+  const opacityOutline = useSharedValue(1)
 
   useEffect(() => {
     if (focused) {
-      x.value = withDelay(500, withTiming(1))
+      opacityFill.value = withDelay(500, withTiming(1))
+      opacityOutline.value = withDelay(500, withTiming(0))
     } else {
-      x.value = withDelay(100, withTiming(0))
+      opacityFill.value = withDelay(100, withTiming(0))
+      opacityOutline.value = withDelay(100, withTiming(1))
     }
-  }, [focused, x.value])
+  }, [focused, opacityFill.value])
 
-  const y = useDerivedValue(() => interpolateColor(x.value, [0, 1], [color, '#333']), [focused])
-
-  const style = useAnimatedStyle(() => {
+  const fill = useAnimatedStyle(() => {
     return {
-      color: interpolateColor(x.value, [0, 1], ['#333', color]),
+      transform: [{ translateY: 18 }],
+      opacity: opacityFill.value,
+    }
+  })
+  const outline = useAnimatedStyle(() => {
+    return {
+      opacity: opacityOutline.value,
     }
   })
 
-  return <AnimatedFontAwesome {...props} color={undefined} style={style} />
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', overflow: 'hidden' }}>
+      {/* Fill */}
+      <Animated.View style={[StyleSheet.absoluteFill, fill]}>
+        <Ionicons {...(props as any)} color={color} size={24} />
+      </Animated.View>
+      {/* Outline */}
+      <Animated.View style={outline}>
+        <Ionicons {...(props as any)} color="#e7e7e7" name={`${props.name}-outline`} />
+      </Animated.View>
+    </View>
+  )
 }
-
-const styles = StyleSheet.create({})
 
 export default TabBarIcon
