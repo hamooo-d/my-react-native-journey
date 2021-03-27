@@ -49,7 +49,7 @@ const TabBarIcon: React.FC<TabBarIconProps> = ({ focused, color, ...props }) => 
       </Animated.View>
       {/* Outline */}
       <Animated.View style={outline}>
-        <Ionicons {...(props as any)} color="#e7e7e7" name={`${props.name}-outline`} />
+        <Ionicons {...(props as any)} color="#2c2c2c" name={`${props.name}-outline`} />
       </Animated.View>
     </View>
   )

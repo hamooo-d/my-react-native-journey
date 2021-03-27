@@ -16,7 +16,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation })
   }
 
   return (
-    <LinearGradient style={styles.tabBar} colors={['#6fe3e1', '#5257e5']}>
+    <LinearGradient style={styles.tabBar} colors={['#f1e1c2', '#fcbc98']}>
       <Indicator index={state.index} />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key]
