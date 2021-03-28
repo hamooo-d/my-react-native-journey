@@ -1,18 +1,22 @@
-import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
-interface HomeProps {}
+interface HomeProps {
+  navigation: any
+}
 
 const Home: React.FC<HomeProps> = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Tab title="✋  Pan Gesture" goToScreen="Pan Gesture" />
       <Tab title="🎆  Transitions" goToScreen="Transitions" />
       <Tab title="🏸  Collapse" goToScreen="Collapse Gesutre" />
       <Tab title="🔽  Bottom Tab" goToScreen="Bottom Tabbar" />
-    </View>
+      <Tab title="💻  Shared Elements" goToScreen="Shared Elements" />
+    </ScrollView>
   )
 }
 
