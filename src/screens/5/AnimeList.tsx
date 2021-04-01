@@ -1,8 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 import { StackProps } from '.'
+import { ANIME_CONSTANTS } from '../../constants'
 import AnimeThumbnail from './AnimeThumbnail'
 
 type AnimeListProps = StackScreenProps<StackProps, 'List'>
@@ -18,9 +20,6 @@ const AnimeList: React.FC<AnimeListProps> = ({ navigation }) => {
     try {
       const response = await fetch(links?.next as any)
       const json = await response.json()
-      json.data.forEach((item: any) => {
-        console.log(item.attributes.titles)
-      })
       const newData = [...data, ...json.data]
       setLinks(json.links)
       setData(newData)
@@ -55,10 +54,14 @@ const AnimeList: React.FC<AnimeListProps> = ({ navigation }) => {
 
   return (
     <FlatList
-      contentContainerStyle={styles.container}
       data={data}
       onEndReached={loadMore}
-      onEndReachedThreshold={1.0}
+      keyExtractor={(item: any) => item.id}
+      onEndReachedThreshold={0.5}
+      // snapToInterval={ANIME_CONSTANTS.FULL_SIZE - 20}
+      showsHorizontalScrollIndicator={false}
+      decelerationRate="fast"
+      horizontal
       numColumns={1}
       renderItem={({ item }: any) => <AnimeThumbnail item={item} />}
     />
@@ -67,7 +70,9 @@ const AnimeList: React.FC<AnimeListProps> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 

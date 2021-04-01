@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
+import { enableScreens } from 'react-native-screens'
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element'
 import AnimeDetails from './AnimeDetails'
 import AnimeList from './AnimeList'

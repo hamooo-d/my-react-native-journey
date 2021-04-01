@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { SharedElement } from 'react-navigation-shared-element'
+import { ANIME_CONSTANTS } from '../../constants'
 
 interface AnimeThumbnailProps {
   item: any
@@ -9,45 +10,43 @@ interface AnimeThumbnailProps {
 
 const AnimeThumbnail: React.FC<AnimeThumbnailProps> = React.memo(({ item }) => {
   const navigation = useNavigation()
+
   return (
-    <View style={styles.card}>
-      <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('Detail', { item })}>
-        <SharedElement id={`item.${item.id}.poster`} style={{ flex: 1, height: 300 }}>
-          <Image
-            resizeMode="stretch"
-            source={{ uri: item.attributes.posterImage.large }}
-            style={styles.image}
-          />
-        </SharedElement>
-        <SharedElement id={`item.${item.id}.title`} style={styles.container}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.attributes.titles.en_jp}</Text>
-        </SharedElement>
-      </TouchableOpacity>
-    </View>
+    <Pressable onPress={() => navigation.navigate('Detail', { item })} style={styles.card}>
+      <SharedElement id={`item.${item.id}.poster`} style={styles.image}>
+        <Image
+          resizeMode="stretch"
+          source={{ uri: item.attributes.posterImage.large }}
+          style={[StyleSheet.absoluteFill, { borderRadius: RADIUS }]}
+        />
+      </SharedElement>
+      <SharedElement id={`item.${item.id}.title`} style={{ height: 60 }}>
+        <View>
+          <Text style={styles.text}>{item.attributes.titles.en_jp}</Text>
+        </View>
+      </SharedElement>
+    </Pressable>
   )
 })
+
+const { ITEM_HEIGHT, ITEM_WIDTH, RADIUS, SPACING } = ANIME_CONSTANTS
 
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    elevation: 5,
-    margin: 8,
-    marginBottom: 24,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    width: ITEM_WIDTH,
+    justifyContent: 'center',
+    margin: SPACING,
   },
   image: {
-    height: 300,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    width: '100%',
+    height: ITEM_HEIGHT * 0.95,
   },
-  container: {
-    padding: 8,
-    backgroundColor: '#fff',
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    borderColor: '#333',
-    borderWidth: 0.5,
+  text: {
+    color: '#000',
+    fontSize: 18,
+    fontWeight: '700',
+    textAlign: 'center',
   },
 })
 
