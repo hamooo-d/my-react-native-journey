@@ -1,28 +1,28 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import { enableScreens } from 'react-native-screens'
-import { createSharedElementStackNavigator } from 'react-navigation-shared-element'
-import AnimeDetails from './AnimeDetails'
-import AnimeList from './AnimeList'
+import React from "react";
+import { enableScreens } from "react-native-screens";
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
+import AnimeDetails from "./AnimeDetails";
+import AnimeList from "./AnimeList";
 
 export type StackProps = {
-  List: undefined
-  Detail: { item: any }
-}
+  List: undefined;
+  Detail: { item: any };
+};
 
-const Stack = createSharedElementStackNavigator<StackProps>()
+enableScreens();
+
+const Stack = createSharedElementStackNavigator<StackProps>();
 
 const SharedAnimations: React.FC = () => {
   return (
     <Stack.Navigator
       mode="modal"
       screenOptions={{
-        title: 'Anime List',
-        headerTitleAlign: 'center',
+        title: "Anime List",
+        headerTitleAlign: "center",
         gestureEnabled: false,
-        // cardOverlayEnabled: true,
         headerStyle: {
-          backgroundColor: '#f9dc5c',
+          backgroundColor: "#f9dc5c",
         },
       }}
     >
@@ -34,19 +34,15 @@ const SharedAnimations: React.FC = () => {
           return [
             {
               id: `item.${item.id}.poster`,
-              animation: 'move',
-              resize: 'clip',
             },
             {
               id: `item.${item.id}.title`,
-              animation: 'move',
-              resize: 'clip',
             },
-          ]
+          ];
         }}
       />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
-export default SharedAnimations
+export default SharedAnimations;
