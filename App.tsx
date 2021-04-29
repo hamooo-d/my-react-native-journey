@@ -8,7 +8,10 @@ import CollapseGesture from './src/screens/3'
 import Home from './src/screens/Home'
 import BottomTabBar from './src/screens/4'
 import SharedAnimations from './src/screens/5'
+import { enableScreens } from 'react-native-screens'
+import CSSPlayground from './src/screens/6'
 
+enableScreens()
 const Stack = createStackNavigator()
 
 export default function App() {
@@ -31,6 +34,7 @@ export default function App() {
         <Stack.Screen name="Transitions" component={Transitions} />
         <Stack.Screen name="Collapse Gesutre" component={CollapseGesture} />
         <Stack.Screen name="Bottom Tabbar" component={BottomTabBar} />
+        <Stack.Screen name="CSS Playground" component={CSSPlayground} />
         <Stack.Screen
           name="Shared Elements"
           options={{

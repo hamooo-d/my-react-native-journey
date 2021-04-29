@@ -2,7 +2,10 @@ import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useCallback } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
+import {
+  PanGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from 'react-native-gesture-handler'
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -31,14 +34,21 @@ const Collapse: React.FC = () => {
     }
   }, [height])
 
-  const onGestureEvent = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, Context>({
+  const onGestureEvent = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    Context
+  >({
     onStart: (_, ctx) => {
       ctx.offsetY = height.value
     },
 
     onActive: (e, ctx) => {
       const clamped = clamp(e.translationY + ctx.offsetY, 0, MAX_HEIGHT)
-      height.value = clamp(e.translationY + ctx.offsetY, START_HEIGHT, MAX_HEIGHT)
+      height.value = clamp(
+        e.translationY + ctx.offsetY,
+        START_HEIGHT,
+        MAX_HEIGHT
+      )
       opacity.value = clamped / (MAX_HEIGHT - START_HEIGHT)
     },
     onEnd: (e, ctx) => {

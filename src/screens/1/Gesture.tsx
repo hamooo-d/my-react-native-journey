@@ -1,5 +1,8 @@
 import React from 'react'
-import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
+import {
+  PanGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from 'react-native-gesture-handler'
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -27,7 +30,10 @@ const Gesture: React.FC<GestureProps> = ({ width, height }) => {
   const translateX = useSharedValue(0)
   const translateY = useSharedValue(0)
 
-  const onGestureEvent = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, Context>({
+  const onGestureEvent = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    Context
+  >({
     onStart: (_, ctx) => {
       ctx.offsetY = translateY.value
       ctx.offsetX = translateX.value
@@ -39,8 +45,16 @@ const Gesture: React.FC<GestureProps> = ({ width, height }) => {
     },
 
     onEnd: (e) => {
-      translateX.value = withBouncing(withDecay({ velocity: e.velocityX }), 0, boundX)
-      translateY.value = withBouncing(withDecay({ velocity: e.velocityY }), 0, boundY)
+      translateX.value = withBouncing(
+        withDecay({ velocity: e.velocityX }),
+        0,
+        boundX
+      )
+      translateY.value = withBouncing(
+        withDecay({ velocity: e.velocityY }),
+        0,
+        boundY
+      )
     },
   })
 

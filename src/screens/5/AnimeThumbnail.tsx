@@ -1,19 +1,19 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Image, Pressable, StyleSheet } from "react-native";
-import { SharedElement } from "react-navigation-shared-element";
-import { ANIME_CONSTANTS } from "../../constants";
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { Image, Pressable, StyleSheet } from 'react-native'
+import { SharedElement } from 'react-navigation-shared-element'
+import { ANIME_CONSTANTS } from '../../constants'
 
 interface AnimeThumbnailProps {
-  item: any;
+  item: any
 }
 
 const AnimeThumbnail: React.FC<AnimeThumbnailProps> = React.memo(({ item }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
     <Pressable
-      onPress={() => navigation.navigate("Detail", { item })}
+      onPress={() => navigation.navigate('Detail', { item })}
       style={styles.card}
     >
       <SharedElement id={`item.${item.id}.poster`} style={styles.image}>
@@ -24,28 +24,28 @@ const AnimeThumbnail: React.FC<AnimeThumbnailProps> = React.memo(({ item }) => {
         />
       </SharedElement>
     </Pressable>
-  );
-});
+  )
+})
 
-const { ITEM_WIDTH, RADIUS } = ANIME_CONSTANTS;
+const { ITEM_WIDTH, RADIUS } = ANIME_CONSTANTS
 
 const styles = StyleSheet.create({
   card: {
     flex: 1,
     width: ITEM_WIDTH,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   image: {
-    width: "100%",
+    width: '100%',
     height: 200,
-    resizeMode: "cover",
+    resizeMode: 'cover',
   },
   text: {
-    color: "#000",
+    color: '#000',
     fontSize: 18,
-    fontWeight: "700",
-    textAlign: "center",
+    fontWeight: '700',
+    textAlign: 'center',
   },
-});
+})
 
-export default AnimeThumbnail;
+export default AnimeThumbnail

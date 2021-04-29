@@ -12,11 +12,19 @@ interface AnimatedCardProps {
 const { width } = Dimensions.get('window')
 const origin = -(width / 2 - 8 * 2)
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ card: Card, index, transition }) => {
+const AnimatedCard: React.FC<AnimatedCardProps> = ({
+  card: Card,
+  index,
+  transition,
+}) => {
   const style = useAnimatedStyle(() => {
     const rotate = mix(transition.value, 0, ((index - 1) * Math.PI) / 6)
     return {
-      transform: [{ translateX: origin }, { rotate: `${rotate}rad` }, { translateX: -origin }],
+      transform: [
+        { translateX: origin },
+        { rotate: `${rotate}rad` },
+        { translateX: -origin },
+      ],
     }
   })
   return (

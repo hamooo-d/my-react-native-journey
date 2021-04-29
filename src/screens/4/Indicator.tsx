@@ -35,12 +35,16 @@ const Indicator: React.FC<IndicatorProps> = ({ index }) => {
     scale.value = withSpring(scaleValues.start)
     translateX.value = withDelay(
       300,
-      withTiming(index >= 2 ? TAB_WIDTH * (index + 1) : TAB_WIDTH * index, {}, (isFinished) => {
-        if (isFinished) {
-          scale.value = withSpring(scaleValues.max)
-          bottom.value = withTiming(bottomValues.end)
+      withTiming(
+        index >= 2 ? TAB_WIDTH * (index + 1) : TAB_WIDTH * index,
+        {},
+        (isFinished) => {
+          if (isFinished) {
+            scale.value = withSpring(scaleValues.max)
+            bottom.value = withTiming(bottomValues.end)
+          }
         }
-      })
+      )
     )
   }, [index, translateX.value])
 

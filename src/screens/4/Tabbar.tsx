@@ -8,7 +8,11 @@ import CustomTab from './CustomTab'
 import Indicator from './Indicator'
 import Tab from './Tab'
 
-const TabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+const TabBar: React.FC<BottomTabBarProps> = ({
+  state,
+  descriptors,
+  navigation,
+}) => {
   const focusedOptions = descriptors[state.routes[state.index].key].options
 
   if (focusedOptions.tabBarVisible === false) {

@@ -23,7 +23,9 @@ const CustomTab: React.FC<CustomTabProps> = () => {
   }
 
   const style = useAnimatedStyle(() => ({
-    transform: [{ rotate: `${interpolate(rotate.value, [0, 1], [0, 225])}deg` }],
+    transform: [
+      { rotate: `${interpolate(rotate.value, [0, 1], [0, 225])}deg` },
+    ],
   }))
 
   return (

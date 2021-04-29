@@ -1,48 +1,29 @@
-import React from "react";
-import { enableScreens } from "react-native-screens";
-import { createSharedElementStackNavigator } from "react-navigation-shared-element";
-import AnimeDetails from "./AnimeDetails";
-import AnimeList from "./AnimeList";
+import React from 'react'
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element'
+import DetailsScreen from './DetailsScreen'
+import ListScreen from './ListScreen'
 
 export type StackProps = {
-  List: undefined;
-  Detail: { item: any };
-};
+  List: undefined
+  Detail: { item: any }
+}
 
-enableScreens();
-
-const Stack = createSharedElementStackNavigator<StackProps>();
+const Stack = createSharedElementStackNavigator<StackProps>()
 
 const SharedAnimations: React.FC = () => {
   return (
-    <Stack.Navigator
-      mode="modal"
-      screenOptions={{
-        title: "Anime List",
-        headerTitleAlign: "center",
-        gestureEnabled: false,
-        headerStyle: {
-          backgroundColor: "#f9dc5c",
-        },
-      }}
-    >
-      <Stack.Screen component={AnimeList} name="List" />
+    <Stack.Navigator initialRouteName="List" mode="modal">
+      <Stack.Screen component={ListScreen} name="List" />
       <Stack.Screen
-        component={AnimeDetails}
+        component={DetailsScreen}
+        sharedElements={() => [
+          { id: 'image', animation: 'fade', align: 'center-center' },
+        ]}
+        options={{ headerShown: false }}
         name="Detail"
-        sharedElements={({ params: { item } }) => {
-          return [
-            {
-              id: `item.${item.id}.poster`,
-            },
-            {
-              id: `item.${item.id}.title`,
-            },
-          ];
-        }}
       />
     </Stack.Navigator>
-  );
-};
+  )
+}
 
-export default SharedAnimations;
+export default SharedAnimations

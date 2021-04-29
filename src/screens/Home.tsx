@@ -15,7 +15,8 @@ const Home: React.FC<HomeProps> = () => {
       <Tab title="🎆  Transitions" goToScreen="Transitions" />
       <Tab title="🏸  Collapse" goToScreen="Collapse Gesutre" />
       <Tab title="🔽  Bottom Tab" goToScreen="Bottom Tabbar" />
-      <Tab title="💻  Shared Elements" goToScreen="Shared Elements" />
+      <Tab title="💻  Shared Elements (broken)" goToScreen="Shared Elements" />
+      <Tab title="💻  CSS Playground" goToScreen="CSS Playground" />
     </ScrollView>
   )
 }

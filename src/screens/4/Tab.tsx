@@ -1,6 +1,12 @@
 import { LabelPosition } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
 import React from 'react'
-import { Text, View, StyleSheet, TouchableOpacityProps, TouchableOpacity } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacityProps,
+  TouchableOpacity,
+} from 'react-native'
 
 interface TabProps extends TouchableOpacityProps {
   isFocused: boolean
@@ -8,10 +14,20 @@ interface TabProps extends TouchableOpacityProps {
   icon: React.ReactNode
   label:
     | string
-    | ((props: { focused: boolean; color: string; position: LabelPosition }) => React.ReactNode)
+    | ((props: {
+        focused: boolean
+        color: string
+        position: LabelPosition
+      }) => React.ReactNode)
 }
 
-const Tab: React.FC<TabProps> = ({ options, isFocused, label, icon, ...rest }) => {
+const Tab: React.FC<TabProps> = ({
+  options,
+  isFocused,
+  label,
+  icon,
+  ...rest
+}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
